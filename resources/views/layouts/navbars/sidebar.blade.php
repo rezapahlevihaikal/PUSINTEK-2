@@ -48,6 +48,13 @@
                   <span class="sidebar-normal"> {{ __('Roles Management') }} </span>
                 </a>
               </li>
+
+              <li class="nav-item{{ $activePage == 'locations-management' ? ' active' : '' }}">
+                <a class="nav-link" href="{{ route('locations.index') }}">
+                  <span class="sidebar-mini"> LM </span>
+                  <span class="sidebar-normal"> {{ __('Locations Management') }} </span>
+                </a>
+              </li>
             </ul>
           </div>
         </li>
