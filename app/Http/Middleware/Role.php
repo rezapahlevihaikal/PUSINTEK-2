@@ -16,7 +16,7 @@ class Role
      */
     public function handle($request, Closure $next)
     {
-        if(Auth::user()->role_id === 8){
+        if(Auth::user()->rolesDetail->name === 'admin'){
             return $next($request);
         }
          return redirect('/home');
