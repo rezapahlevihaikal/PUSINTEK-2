@@ -30,7 +30,7 @@
                       </div>
               <div class="row">
                       <div class="col-sm-6 col-md-3" >
-                          <img src="https://via.placeholder.com/250" alt="" class="img-fluid" />
+                          <img src="{{asset('images/'.auth()->user()->image)}}" alt="no photo" class="img-fluid" />
                       </div>
                       
                           <div class="col-sm-6 col-md-8                                                         ">

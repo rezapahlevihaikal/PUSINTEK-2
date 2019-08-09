@@ -5,7 +5,7 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-md-12">
-          <form method="post" action="{{ route('user.store') }}" autocomplete="off" class="form-horizontal">
+          <form method="post" action="{{ route('user.store') }}" autocomplete="off" class="form-horizontal" enctype="multipart/form-data">
             @csrf
             @method('post')
 
@@ -20,6 +20,22 @@
                       <a href="{{ route('user.index') }}" class="btn btn-sm btn-primary">{{ __('Back to list') }}</a>
                   </div>
                 </div>
+
+                <div class="row">
+                  <label class="col-sm-2 col-form-label">{{ __('Upload Image') }}</label>
+                  <div class="col-sm-7">
+                    <div class="file_input_div">
+                      <div class="file_input">
+                          <input id="file_input_file" name="image" class="none" type="file" />
+                          @if ($errors->has('image'))
+                            <span id="image-error" class="error text-danger" for="input-image">{{ $errors->first('image') }}</span>
+                          @endif
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
                 <div class="row">
                   <label class="col-sm-2 col-form-label">{{ __('Name') }}</label>
                   <div class="col-sm-7">
