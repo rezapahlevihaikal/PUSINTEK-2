@@ -11,6 +11,18 @@
     <span class="navbar-toggler-icon icon-bar"></span>
     </button>
     <div class="collapse navbar-collapse justify-content-end">
+<<<<<<< HEAD
+=======
+      <form class="navbar-form">
+        <!-- <div class="input-group no-border">
+          <input type="text" value="" class="form-control" placeholder="Search...">
+          <button type="submit" class="btn btn-white btn-round btn-just-icon">
+            <i class="material-icons">search</i>
+            <div class="ripple-container"></div>
+          </button>
+        </div> -->
+      </form>
+>>>>>>> b879adf23624501f903e2a7c8636f1a2ed3fad60
       <ul class="navbar-nav">
         
         <li class="nav-item dropdown">
@@ -21,7 +33,7 @@
             </p>
           </a>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownProfile">
-            <a class="dropdown-item" href="#">{{ __('Profile') }}</a>
+            <a class="dropdown-item" href="my-profile">{{ __('Profile') }}</a>
             <a class="dropdown-item" href="{{ route('profile.edit') }}">{{ __('Settings') }}</a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">{{ __('Log out') }}</a>

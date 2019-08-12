@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\User;
 use App\Role;
+use File;
 use App\Http\Requests\UserRequest;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
@@ -38,9 +40,35 @@ class UserController extends Controller
      * @param  \App\User  $model
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function store(UserRequest $request, User $model)
-    {
-        $model->create($request->merge(['password' => Hash::make($request->get('password'))])->all());
+    public function store(Request $request)
+    {   
+        $request->validate([
+            'name'      => 'required',
+            'email'     => 'required|email',
+            'password'  => 'required|min:6|confirmed',
+            'role_id'   => 'required',
+            'image' => 'required|image|mimes:jpg,png,jpeg,svg|max:2048'
+        ]);
+
+        $users = new User;
+        $users->name     = $request->name;
+        $users->email    = $request->email;
+        $users->password = bcrypt($request->password);
+        $users->role_id  = $request->role_id;
+
+        if($request->hasFile('image')){
+            $file = $request->file('image');
+            $fileName = time().'.'.$file->getClientOriginalExtension();
+            $destinationPath = public_path('images');
+            $file->move($destinationPath , $fileName);
+            $users->image = $fileName;
+        }
+
+        $users->save();
+
+
+
+        // $model->create($request->merge(['password' => Hash::make($request->get('password'))])->all());
 
         return redirect()->route('user.index')->withStatus(__('User successfully created.'));
     }
@@ -65,14 +93,39 @@ class UserController extends Controller
      * @param  \App\User  $user
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(UserRequest $request, User  $user)
-    {
+    public function update(Request $request, $id)
+    {   
+        $request->validate([
+            'name'      => 'required',
+            'email'     => 'required|email',
+            'password'  => 'confirmed',
+            'role_id'   => 'required',
+        ]);
+
+        $user = User::find($id);
+        $user->name     = $request->name;
+        $user->email    = $request->email;
+        $user->role_id  = $request->role_id;
+
+        if($request->password != ""){
+            $user->password = bcrypt($request->password);
+        }
+
+        if($request->hasFile('image')){
+            File::delete('images/'.$user->image);
+            $file = $request->file('image');
+            $fileName = time().'.'.$file->getClientOriginalExtension();
+            $destinationPath = public_path('images');
+            $file->move($destinationPath , $fileName);
+            $user->image = $fileName;
+        }
+
+        $user->save();
         
-        $user->update(
-            $request->merge(['password' => Hash::make($request->get('password'))])
-                ->except([$request->get('password') ? '' : 'password']
-        ));
-        // dd($user);
+        // $user->update(
+        //     $request->merge(['password' => Hash::make($request->get('password'))])
+        //         ->except([$request->get('password') ? '' : 'password']
+        // ));
         return redirect()->route('user.index')->withStatus(__('User successfully updated.'));
     }
 
@@ -84,6 +137,7 @@ class UserController extends Controller
      */
     public function destroy(User  $user)
     {
+        File::delete('images/'.$user->image);
         $user->delete();
 
         return redirect()->route('user.index')->withStatus(__('User successfully deleted.'));

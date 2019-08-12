@@ -5,8 +5,8 @@
       Tip 2: you can also add an image using data-image tag
   -->
   <div class="logo">
-    <a href="https://creative-tim.com/" class="simple-text logo-normal">
-      {{ __('PUSINTEK') }}
+    <a href="#" class="simple-text logo-normal">
+      <img src="{{asset('icon/logo2.png')}}" alt="" style="width:250px; height:70px">
     </a>
   </div>
   <div class="sidebar-wrapper">
@@ -20,7 +20,7 @@
 
       @if(Auth::user()->rolesDetail->name === 'admin')
         <li class="nav-item {{ ($activePage == 'profile' || $activePage == 'user-management') ? ' active' : '' }}">
-          <a class="nav-link" data-toggle="collapse" href="#laravelExample" aria-expanded="true">
+          <a class="nav-link" data-toggle="collapse" href="#" aria-expanded="true">
             <!-- <i><img style="width:25px" src="{{ asset('material') }}/img/laravel.svg"></i> -->
             <p>{{ __('Admin Management') }}
               <b class="caret"></b>
@@ -28,12 +28,12 @@
           </a>
           <div class="collapse show" id="laravelExample">
             <ul class="nav">
-              <li class="nav-item{{ $activePage == 'profile' ? ' active' : '' }}">
+              <!-- <li class="nav-item{{ $activePage == 'profile' ? ' active' : '' }}">
                 <a class="nav-link" href="{{ route('profile.edit') }}">
                   <span class="sidebar-mini"> UP </span>
                   <span class="sidebar-normal">{{ __('User profile') }} </span>
                 </a>
-              </li>
+              </li> -->
 
               <li class="nav-item{{ $activePage == 'user-management' ? ' active' : '' }}">
                 <a class="nav-link" href="{{ route('user.index') }}">

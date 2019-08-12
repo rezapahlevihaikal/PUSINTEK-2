@@ -5,7 +5,7 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-md-12">
-          <form method="post" action="{{ route('user.update', $user) }}" autocomplete="off" class="form-horizontal">
+          <form method="post" action="{{ route('user.update', $user) }}" autocomplete="off" class="form-horizontal" enctype="multipart/form-data">
             @csrf
             @method('put')
 
@@ -20,6 +20,23 @@
                       <a href="{{ route('user.index') }}" class="btn btn-sm btn-primary">{{ __('Back to list') }}</a>
                   </div>
                 </div>
+
+                <div class="row">
+                  <label class="col-sm-2 col-form-label">{{ __('Upload Image') }}</label>
+                  <div class="col-sm-7">
+                    <div class="file_input_div">
+                      <div class="file_input">
+                          <img src="{{asset('images/'.$user->image)}}" alt="" width="100px" height="auto" style = "margin : 10px 0 10px 0 "> &nbsp; &nbsp;
+                          <input id="file_input_file" name="image" class="none" type="file" />
+                          @if ($errors->has('image'))
+                            <span id="image-error" class="error text-danger" for="input-image">{{ $errors->first('image') }}</span>
+                          @endif
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
                 <div class="row">
                   <label class="col-sm-2 col-form-label">{{ __('Name') }}</label>
                   <div class="col-sm-7">
@@ -48,9 +65,14 @@
                   <div class="col-sm-7">
                     <div class="form-group{{ $errors->has('role_id') ? ' has-danger' : '' }}">
                       <select class="form-control {{ $errors->has('role_id') ? 'is-invalid' : '' }}" name="role_id" id="input-role_id">
-                        <option value="" disabled selected>Select your option</option>
                         @foreach($roles as $role)
-                          <option value="{{$role->id}}">{{$role->name}}</option>
+                          <option value="{{$role->id}}"
+                            <?php
+                              if($user->role_id == $role->id){
+                                echo "selected";
+                              }
+                            ?>
+                          >{{$role->name}}</option>
                         @endforeach
                       </select>
                     </div>
