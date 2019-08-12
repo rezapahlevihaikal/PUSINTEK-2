@@ -10,14 +10,14 @@
             @method('post')
 
             <div class="card ">
-              <div class="card-header card-header-primary">
+              <div class="card-header card-header-info">
                 <h4 class="card-title">{{ __('Add Role') }}</h4>
                 <p class="card-category"></p>
               </div>
               <div class="card-body ">
                 <div class="row">
                   <div class="col-md-12 text-right">
-                      <a href="{{ route('user.index') }}" class="btn btn-sm btn-primary">{{ __('Back to list') }}</a>
+                      <a href="{{ route('role.index') }}" class="btn btn-sm btn-warning">{{ __('Back to list') }}</a>
                   </div>
                 </div>
                 <div class="row">
@@ -33,7 +33,7 @@
                 </div>
               </div>
               <div class="card-footer ml-auto mr-auto">
-                <button type="submit" class="btn btn-primary">{{ __('Add Role') }}</button>
+                <button type="submit" class="btn btn-warning">{{ __('Add Role') }}</button>
               </div>
             </div>
           </form>

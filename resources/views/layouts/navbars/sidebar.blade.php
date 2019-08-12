@@ -20,21 +20,14 @@
 
       @if(Auth::user()->rolesDetail->name === 'admin')
         <li class="nav-item {{ ($activePage == 'profile' || $activePage == 'user-management') ? ' active' : '' }}">
-          <a class="nav-link" data-toggle="collapse" href="#" aria-expanded="true">
-            <!-- <i><img style="width:25px" src="{{ asset('material') }}/img/laravel.svg"></i> -->
+          <a class="nav-link" data-toggle="collapse" href="#laravelExample" aria-expanded="true">
+            <i class="material-icons">folder_special</i>
             <p>{{ __('Admin Management') }}
               <b class="caret"></b>
             </p>
           </a>
           <div class="collapse show" id="laravelExample">
             <ul class="nav">
-              <!-- <li class="nav-item{{ $activePage == 'profile' ? ' active' : '' }}">
-                <a class="nav-link" href="{{ route('profile.edit') }}">
-                  <span class="sidebar-mini"> UP </span>
-                  <span class="sidebar-normal">{{ __('User profile') }} </span>
-                </a>
-              </li> -->
-
               <li class="nav-item{{ $activePage == 'user-management' ? ' active' : '' }}">
                 <a class="nav-link" href="{{ route('user.index') }}">
                   <span class="sidebar-mini"> UM </span>
@@ -53,6 +46,13 @@
                 <a class="nav-link" href="{{ route('locations.index') }}">
                   <span class="sidebar-mini"> LM </span>
                   <span class="sidebar-normal"> {{ __('Locations Management') }} </span>
+                </a>
+              </li>
+
+              <li class="nav-item{{ $activePage == 'lokasi-management' ? ' active' : '' }}">
+                <a class="nav-link" href="{{ route('lokasi.index') }}">
+                  <span class="sidebar-mini"> LM </span>
+                  <span class="sidebar-normal"> {{ __('Lokasi Manajemen') }} </span>
                 </a>
               </li>
             </ul>
