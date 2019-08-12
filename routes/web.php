@@ -15,7 +15,7 @@ Route::get('/', function () {
 	if(Auth::user()){
 		return view('dashboard');
 	}
-    return view('welcome');
+    return view('auth.login');
 });
 
 Auth::routes(['register' => false]);
@@ -32,6 +32,7 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::resource('user', 'UserController', ['except' => ['show']])->middleware('role');
 	Route::resource('role', 'RoleController')->middleware('role');
 	Route::resource('locations', 'LocationController')->middleware('role');
+	Route::resource('lokasi', 'LocManageController')->middleware('role');
 	Route::get('my-profile', 'ProfileController@indexProfile');
 	Route::get('profile', ['as' => 'profile.edit', 'uses' => 'ProfileController@edit']);
 	Route::put('profile', ['as' => 'profile.update', 'uses' => 'ProfileController@update']);

@@ -11,7 +11,7 @@
         @csrf
 
         <div class="card card-login card-hidden mb-3">
-          <div class="card-header card-header-primary text-center">
+          <div class="card-header card-header-info text-center">
             <h3 class="card-title" style="padding : 30px;"><strong>{{ __('Login') }}</strong></h3>
             <!-- <div class="social-line">
               <a href="#pablo" class="btn btn-just-icon btn-link btn-white">
@@ -26,7 +26,7 @@
             </div> -->
           </div>
           <div class="card-body">
-            <p class="card-description text-center">{{ __('Sign in with ') }} <strong>Your Email</strong> {{ __(' and your password ') }}<strong>secret</strong> </p>
+            <!-- <p class="card-description text-center">{{ __('Sign in with ') }} <strong>Your Email</strong> {{ __(' and your password ') }}<strong>secret</strong> </p> -->
             <div class="bmd-form-group{{ $errors->has('email') ? ' has-danger' : '' }}">
               <div class="input-group">
                 <div class="input-group-prepend">
@@ -34,7 +34,7 @@
                     <i class="material-icons">email</i>
                   </span>
                 </div>
-                <input type="email" name="email" class="form-control" placeholder="{{ __('Email...') }}" required>
+                <input type="email" name="email" class="form-control" placeholder="{{ __('Email') }}" required>
               </div>
               @if ($errors->has('email'))
                 <div id="email-error" class="error text-danger pl-3" for="email" style="display: block;">
@@ -49,7 +49,7 @@
                     <i class="material-icons">lock_outline</i>
                   </span>
                 </div>
-                <input type="password" name="password" id="password" class="form-control" placeholder="{{ __('Password...') }}" required>
+                <input type="password" name="password" id="password" class="form-control" placeholder="{{ __('Password') }}" required>
               </div>
               @if ($errors->has('password'))
                 <div id="password-error" class="error text-danger pl-3" for="password" style="display: block;">
@@ -67,11 +67,11 @@
             </div>
           </div>
           <div class="card-footer justify-content-center">
-            <button type="submit" class="btn btn-primary btn-link btn-lg">{{ __('Lets Go') }}</button>
+            <button type="submit" class="btn btn-warning btn-link btn-lg">{{ __('Login') }}</button>
           </div>
         </div>
       </form>
-      <div class="row">
+      <!-- <div class="row">
         <div class="col-6">
             @if (Route::has('password.request'))
                 <a href="{{ route('password.request') }}" class="text-light">
@@ -84,7 +84,7 @@
                 <small>{{ __('Create new account') }}</small>
             </a>
         </div>
-      </div>
+      </div> -->
     </div>
   </div>
 </div>
