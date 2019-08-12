@@ -28,11 +28,7 @@ class HomeController extends Controller
     }
         public function show(Request $request,$id)
     {
-<<<<<<< HEAD
-        $users = User::find($id);
-=======
         $users = User::paginate(6);
->>>>>>> efbe4d1359d92a8bd07041819124c4b4e1d7c152
         return view('dashboard',compact('users'));
     }
 }
