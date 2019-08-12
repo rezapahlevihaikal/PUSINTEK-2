@@ -6,7 +6,7 @@
       <div class="row">
         <div class="col-md-12">
             <div class="card">
-              <div class="card-header card-header-primary">
+              <div class="card-header card-header-info">
                 <h4 class="card-title ">{{ __('Roles') }}</h4>
                 <p class="card-category"> {{ __('Here you can manage Roles') }}</p>
               </div>
@@ -25,12 +25,12 @@
                 @endif
                 <div class="row">
                   <div class="col-12 text-right">
-                    <a href="{{ route('role.create') }}" class="btn btn-sm btn-primary">{{ __('Add Roles') }}</a>
+                    <a href="{{ route('role.create') }}" class="btn btn-sm btn-warning">{{ __('Add Roles') }}</a>
                   </div>
                 </div>
                 <div class="table-responsive">
                   <table class="table">
-                    <thead class=" text-primary">
+                    <thead class=" text-info">
                       <th>
                           {{ __('Name') }}
                       </th>

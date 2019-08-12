@@ -15,7 +15,7 @@ Route::get('/', function () {
 	if(Auth::user()){
 		return view('dashboard');
 	}
-    return view('welcome');
+    return view('auth.login');
 });
 
 Auth::routes(['register' => false]);

@@ -6,7 +6,7 @@
       <div class="row">
         <div class="col-md-12">
             <div class="card">
-              <div class="card-header card-header-primary">
+              <div class="card-header card-header-info">
                 <h4 class="card-title ">{{ __('Profile') }}</h4>
                 <!-- <p class="card-category"> {{ __('WKWKWKWKWKWKWKWK') }}</p> -->
               </div>
@@ -47,7 +47,7 @@
                                             <i class="glyphicon glyphicon-gift"></i>Joined since {{auth()->user()->created_at->diffForHumans()}}</p> -->
                                   <!-- Split button -->
                                       <div class="btn-group">
-                                          <button type="button" href="#" class="btn btn-primary">
+                                          <button type="button" href="#" class="btn btn-info">
                                               Social</button>
                                           <!-- <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
                                               <span class="caret"></span><span class="sr-only">Social</span>
