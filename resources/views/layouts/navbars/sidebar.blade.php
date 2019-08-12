@@ -20,7 +20,7 @@
 
       @if(Auth::user()->rolesDetail->name === 'admin')
         <li class="nav-item {{ ($activePage == 'profile' || $activePage == 'user-management') ? ' active' : '' }}">
-          <a class="nav-link" data-toggle="collapse" href="#" aria-expanded="true">
+          <a class="nav-link" data-toggle="collapse" href="#laravelExample" aria-expanded="true">
             <!-- <i><img style="width:25px" src="{{ asset('material') }}/img/laravel.svg"></i> -->
             <p>{{ __('Admin Management') }}
               <b class="caret"></b>
@@ -53,6 +53,13 @@
                 <a class="nav-link" href="{{ route('locations.index') }}">
                   <span class="sidebar-mini"> LM </span>
                   <span class="sidebar-normal"> {{ __('Locations Management') }} </span>
+                </a>
+              </li>
+
+              <li class="nav-item{{ $activePage == 'lokasi-management' ? ' active' : '' }}">
+                <a class="nav-link" href="{{ route('lokasi.index') }}">
+                  <span class="sidebar-mini"> LM </span>
+                  <span class="sidebar-normal"> {{ __('Lokasi Manajemen') }} </span>
                 </a>
               </li>
             </ul>
