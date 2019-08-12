@@ -21,6 +21,7 @@ Route::get('/', function () {
 Auth::routes(['register' => false]);
 
 Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');
+Route::get('/detail/{id}','HomeController@show');
 
 // Route::group(['middleware' => 'auth'], function () {
 // 	Route::get('table-list', function () {

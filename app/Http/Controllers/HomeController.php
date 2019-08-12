@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\User;
 
 class HomeController extends Controller
 {
@@ -20,7 +21,14 @@ class HomeController extends Controller
      * @return \Illuminate\View\View
      */
     public function index()
+    {   
+        $users = User::all();
+
+        return view('dashboard',compact('users'));
+    }
+        public function show(Request $request,$id)
     {
-        return view('dashboard');
+        $users = User::find($id);
+        return view('dashboard',compact('users'));
     }
 }
