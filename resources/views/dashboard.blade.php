@@ -41,7 +41,6 @@
             </div>
         </div>
     </div>
-=======
   <div class="content">
     <div class="container-fluid">
       
@@ -72,7 +71,6 @@
           {!! $users->links() !!}
       </div>
   </div>
->>>>>>> efbe4d1359d92a8bd07041819124c4b4e1d7c152
 @endsection
 
 @push('js')
