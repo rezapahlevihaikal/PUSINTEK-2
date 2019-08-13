@@ -48,7 +48,7 @@
                       </th>
                     </thead>
                     <tbody>
-                      @foreach($Location as $user)
+                      @foreach($locations as $user)
                         <tr>
                           <td>
                             {{ $user->nama_gedung }}

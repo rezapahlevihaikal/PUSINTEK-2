@@ -1,53 +1,26 @@
 @extends('layouts.app', ['activePage' => 'dashboard', 'titlePage' => __('Dashboard')])
-<style type="text/css">
-    .baru{
-        width: 210px;
-        height : 120px;
-    }
-</style>
 
+@section('css')
+    <style>
+    .stats {
+        margin-right: -15px; 
+      }
+    </style>
+@endsection
 @section('content')
-<<<<<<< HEAD
-    <div class="content">
-        <div class="container-fluid">
-            <div class="row">
-                 @foreach($users as $user)
-                <div class="col-md-3">
-                    <div class="card card-chart">
-                        <div class="card-header card-header-warning">
-                         <img class="card-img-top baru" src="{{asset('portfolio/cabin.png')}}"alt="Card image cap">
-                        </div>
-                        <div class="card-body">
-                            <h4 class="card-title" style="text-align: center;">{{$user->name}}</h4>
-                             <span class="text-success"><i class="fa fa-circle"></i> available </span>
-                            <p class="card-category">
-                                saya diatas
-                            </p>
-
-                            <a href="#" data-id=".$user['id']" type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modalMd">
-                                Detail
-                            </a>
-                            
-                        </div>
-                        <div class="card-footer">
-                            <div class="stats">
-                                <i class="material-icons">access_time</i>  {{ $user->updated_at->diffForHumans() }}
-                            </div>
-                        </div>
-                    </div>
-                </div>
-             @endforeach
-
-            </div>
-        </div>
-    </div>
   <div class="content">
     <div class="container-fluid">
-      
       <div class="row">
+        <div class="col-sm-12 mb-3">
+          <input type="text" id="myFilter" class="form-control" onkeyup="myFunction()" placeholder="Search for names..">
+        </div>
+      </div>
+      <br>
+      
+      <div class="row" id="myItems">
         @foreach ($users as $item)
-          <div class="col-md-4">
-            <div class="card card-profile ml-auto mr-auto" style="max-width: 200px">
+          <div class="col-md-3" id="recipe-card">
+            <div class="card card-profile ml-auto mr-auto" style="max-width: 300px">
               <div class="card-header card-header-image">
                     <a href="#pablo">
                         <img class="img" src="{{asset('images/'.$item->image)}}" style="width: 100px; border-radius: 100%;">
@@ -57,71 +30,61 @@
                 <div class="card-body ">
                     <h5 class="card-title">{{strtoupper($item->name)}}</span></h5>
                     <h6 class="card-category text-gray">{{$item->rolesDetail->name}}</h6>
+                    <div class="card-footer justify-content-center">
+                      @if($item->status === 1)
+                        <span class="text-success">
+                            <i class="fa fa-circle"> Tersedia </i>
+                        </span>
+                      @elseif($item->status === 2)
+                        <span class="text-danger">
+                            <i class="fa fa-circle"> Sibuk </i>
+                        </span>
+                      @else
+                        <span>
+                            <i class="fa fa-circle"> Cuti </i>
+                        </span>
+                      @endif
+                    </div>
+                    
+                    <div class="card-footer justify-content-center">
+                        <div class="stats text-info">
+                            <i class="fa fa-map-marker"> {{strtoupper($item->location)}} </i>
+                            
+                        </div>
+                    </div>
+                    
+                <hr>
                 </div>
                 <div class="card-footer justify-content-center">
-                    <a href="#pablo" class="btn btn-just-icon btn-twitter btn-round">
-                        <i class="fa fa-twitter"></i>
+                    <a href="https://wa.me/6285210069654?text=Oi%20Dimana%20{{$item->name}}" target="_blank" class="btn btn-just-icon btn-success btn-round">
+                        <i class="fa fa-whatsapp"></i>
                     </a>
+                    <a href="#pablo" class="btn btn-just-icon btn-info btn-round">
+                            <i class="fa fa-eye"></i>
+                        </a>
                 </div>
             </div>
           </div>
         @endforeach
       </div>
-      <div class="text-center" style="align-item : center;">
-          {!! $users->links() !!}
-      </div>
   </div>
 @endsection
-
-@push('js')
-    <script>
-        $(document).ready(function() {
-            // Javascript method's body can be found in assets/js/demos.js
-            md.initDashboardPageCharts();
-        });
-    </script>
-@endpush
-<!-- Modal -->
-<div class="modal fade" id="modalMd" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-          <div class="modal-dialog" role="document">
-              <div class="modal-content">
-                  <div class="modal-header">
-                      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                      <h4 class="modal-title" id="modalMdTitle"></h4>
-                  </div>
-                  <div class="modal-body">
-                            <div class="row">
- <div class="col-lg-12">
-  <table class="table table-bordered table-hover">
-   <thead>
-    <tr>
-     <th>Nama</th>
-     <td>{{ $user->name }}</td>
-    </tr>
-    <tr>
-     <th>Judul</th>
-     <td></td>
-    </tr>
-    <tr>
-     <th>Tanggal</th>
-     <td></td>
-    </tr>
-    <tr>
-     <th>Isi</th>
-     <td></td>
-    </tr>
-    <tr>
-     <th>Status</th>
-     <td></td>
-    </tr>
-   </thead>
-  </table>
- </div>
-</div>
-                  </div>
-                      <div class="modalError"></div>
-                      <div id="modalMdContent"></div>
-                  </div>
-              </div>
-          </div>
-        </div>
+@section('js')
+  <script>
+    function myFunction() {
+      var input, filter, cards, cardContainer, h5, title, i;
+      input = document.getElementById("myFilter");
+      filter = input.value.toUpperCase();
+      cardContainer = document.getElementById("myItems");
+      cards = cardContainer.getElementsByClassName("card");
+      for (i = 0; i < cards.length; i++) {
+          title = cards[i].querySelector(".card-body h5.card-title");
+          if (title.innerText.toUpperCase().indexOf(filter) > -1) {
+              cards[i].style.display = "";
+          } else {
+              cards[i].style.display = "none";
+          }
+      }
+    }
+  </script>
+@endsection

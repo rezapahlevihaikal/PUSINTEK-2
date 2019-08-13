@@ -10,41 +10,8 @@
       <span class="navbar-toggler-icon icon-bar"></span>
       <span class="navbar-toggler-icon icon-bar"></span>
     </button>
-<<<<<<< HEAD
-=======
     <div class="collapse navbar-collapse justify-content-end">
-      <ul class="navbar-nav">
-        <!-- <li class="nav-item">
-          <a href="{{ route('home') }}" class="nav-link">
-            <i class="material-icons">dashboard</i> {{ __('Dashboard') }}
-          </a>
-        </li> -->
->>>>>>> efbe4d1359d92a8bd07041819124c4b4e1d7c152
-
-        <!-- <li class="nav-item{{ $activePage == 'register' ? ' active' : '' }}">
-          <a href="{{ route('register') }}" class="nav-link">
-            <i class="material-icons">person_add</i> {{ __('Register') }}
-          </a>
-        </li> -->
-<<<<<<< HEAD
-=======
-<!--         
->>>>>>> efbe4d1359d92a8bd07041819124c4b4e1d7c152
-        <li class="nav-item{{ $activePage == 'login' ? ' active' : '' }}">
-          <a href="{{ route('login') }}" class="nav-link">
-            <i class="material-icons">fingerprint</i> {{ __('Login') }}
-          </a>
-        </li>
-<<<<<<< HEAD
-       
-=======
-        <li class="nav-item ">
-          <a href="{{ route('profile.edit') }}" class="nav-link">
-            <i class="material-icons">face</i> {{ __('Profile') }}
-          </a>
-        </li> -->
->>>>>>> efbe4d1359d92a8bd07041819124c4b4e1d7c152
-      </ul>
+    
     </div>
   </div>
 </nav>

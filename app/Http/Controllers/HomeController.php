@@ -23,12 +23,7 @@ class HomeController extends Controller
     public function index()
     {   
         $users = User::all();
+        return view('dashboard',compact('users'));
+    }
 
-        return view('dashboard',compact('users'));
-    }
-        public function show(Request $request,$id)
-    {
-        $users = User::paginate(6);
-        return view('dashboard',compact('users'));
-    }
 }

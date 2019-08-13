@@ -18,6 +18,13 @@
         </a>
       </li>
 
+      <li class="nav-item{{ $activePage == 'locations-management' ? ' active' : '' }}">
+        <a class="nav-link" href="{{ route('locations.index') }}">
+          <i class="material-icons">list</i>
+            <p>{{ __('Manage Your Location') }}</p>
+        </a>
+      </li>
+
       @if(Auth::user()->rolesDetail->name === 'admin')
         <li class="nav-item {{ ($activePage == 'profile' || $activePage == 'user-management') ? ' active' : '' }}">
           <a class="nav-link" data-toggle="collapse" href="#laravelExample" aria-expanded="true">
@@ -39,20 +46,6 @@
                 <a class="nav-link" href="{{ route('role.index') }}">
                   <span class="sidebar-mini"> RM </span>
                   <span class="sidebar-normal"> {{ __('Roles Management') }} </span>
-                </a>
-              </li>
-
-              <li class="nav-item{{ $activePage == 'locations-management' ? ' active' : '' }}">
-                <a class="nav-link" href="{{ route('locations.index') }}">
-                  <span class="sidebar-mini"> LM </span>
-                  <span class="sidebar-normal"> {{ __('Locations Management') }} </span>
-                </a>
-              </li>
-
-              <li class="nav-item{{ $activePage == 'lokasi-management' ? ' active' : '' }}">
-                <a class="nav-link" href="{{ route('lokasi.index') }}">
-                  <span class="sidebar-mini"> LM </span>
-                  <span class="sidebar-normal"> {{ __('Lokasi Manajemen') }} </span>
                 </a>
               </li>
             </ul>

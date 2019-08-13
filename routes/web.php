@@ -13,7 +13,8 @@
 
 Route::get('/', function () {
 	if(Auth::user()){
-		return view('dashboard');
+		$users = App\User::all();
+		return view('dashboard',compact('users'));
 	}
     return view('auth.login');
 });
@@ -32,8 +33,7 @@ Route::get('/detail/{id}','HomeController@show');
 Route::group(['middleware' => 'auth'], function () {
 	Route::resource('user', 'UserController', ['except' => ['show']])->middleware('role');
 	Route::resource('role', 'RoleController')->middleware('role');
-	Route::resource('locations', 'LocationController')->middleware('role');
-	Route::resource('lokasi', 'LocManageController')->middleware('role');
+	Route::resource('locations', 'LocationController');
 	Route::get('my-profile', 'ProfileController@indexProfile');
 	Route::get('profile', ['as' => 'profile.edit', 'uses' => 'ProfileController@edit']);
 	Route::put('profile', ['as' => 'profile.update', 'uses' => 'ProfileController@update']);

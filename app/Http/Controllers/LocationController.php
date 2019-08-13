@@ -5,7 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Location;
 use Validate;
-
+use App\User;
+use Auth;
 class LocationController extends Controller
 {
     /**
@@ -13,9 +14,12 @@ class LocationController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Location $model)
+    public function index()
     {
-        return view('locations.index', ['Location' => $model->paginate(15)]);
+        $locations = Location::where('created_by', Auth::user()->id )->get();
+        // $listdoc = Document::where('created_by', $id)->get();
+        // dd($locations);
+        return view('locations.index', compact('locations'));
     }
 
     /**
@@ -36,9 +40,14 @@ class LocationController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        //
+    {   
+        $user = User::find(Auth::user()->id);
+        $user->status = $request->status;
+        $user->location = $request->nama_gedung;
+        $user->save();
+        
         $loc = new Location;
+        $loc->created_by = Auth::user()->id;
         $loc->nama_gedung = $request->nama_gedung;
         $loc->lantai_gedung = $request->lantai_gedung;
         $loc->keterangan = $request->keterangan;

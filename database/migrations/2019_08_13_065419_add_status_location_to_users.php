@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateLocManageTable extends Migration
+class AddStatusLocationToUsers extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,9 @@ class CreateLocManageTable extends Migration
      */
     public function up()
     {
-        Schema::create('loc_manage', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('nama_gedung');
-            $table->string('alamat');
-            $table->timestamps();
+        Schema::table('users', function (Blueprint $table) {
+            $table->integer('status')->after('image');
+            $table->string('location')->after('status');
         });
     }
 
@@ -28,6 +26,8 @@ class CreateLocManageTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('loc_manage');
+        Schema::table('users', function (Blueprint $table) {
+            //
+        });
     }
 }
