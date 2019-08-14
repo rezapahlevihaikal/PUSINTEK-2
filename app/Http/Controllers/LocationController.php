@@ -16,7 +16,7 @@ class LocationController extends Controller
      */
     public function index()
     {
-        $locations = Location::where('created_by', Auth::user()->id )->get();
+        $locations = Location::orderBy('created_at','DSC')->where('created_by', Auth::user()->id )->get();
         // $listdoc = Document::where('created_by', $id)->get();
         // dd($locations);
         return view('locations.index', compact('locations'));
@@ -64,7 +64,9 @@ class LocationController extends Controller
      */
     public function show($id)
     {
-        //
+        $user = User::find($id);
+        $location = Location::where('created_by' , $id)->get();
+        return view('locations.show',compact('location','user'));
     }
 
     /**

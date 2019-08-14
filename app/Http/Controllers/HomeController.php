@@ -22,7 +22,7 @@ class HomeController extends Controller
      */
     public function index()
     {   
-        $users = User::all();
+        $users = User::orderBy('status','ASC')->get();
         return view('dashboard',compact('users'));
     }
 

@@ -1,4 +1,4 @@
-@extends('layouts.app', ['activePage' => 'lokasi-management', 'titlePage' => __('Lokasi Management')])
+@extends('layouts.app', ['activePage' => 'locations-detail', 'titlePage' => __('Detail Lokasi')])
 
 @section('content')
   <div class="content">
@@ -7,8 +7,7 @@
         <div class="col-md-12">
             <div class="card">
               <div class="card-header card-header-primary">
-                <h4 class="card-title ">{{ __('Lokasi Pegawai') }}</h4>
-                <!-- <p class="card-category"> {{ __('Here you can manage Locations') }}</p> -->
+                <h4 class="card-title ">HISTORY LOCATIONS | {{strtoupper($user->name)}}</h4>
               </div>
               <div class="card-body">
                 @if (session('status'))
@@ -24,45 +23,50 @@
                   </div>
                 @endif
                 <div class="row">
-                  <div class="col-12 text-right">
-                    <a href="{{ route('lokasi.create') }}" class="btn btn-sm btn-primary">{{ __('Tambahkan   ') }}</a>
-                  </div>
                 </div>
                 <div class="table-responsive">
-                  <table class="table">
+                  <table class="table text-center">
                     <thead>
+                        <th>
+                            {{ __('Tanggal') }}
+                        </th>
                       <th>
                           {{ __('Nama Gedung') }}
                       </th>
                       <th>
-                        {{ __('Alamat') }}
+                        {{ __('Lantai Gedung') }}
+                      </th>
+                      <th>
+                        {{ __('Keterangan') }}
                       </th>
                       <th>
                         {{ __('Update') }}
                       </th>
-                      <th>
-                        {{ __('Action') }}
-                      </th>
-
                     </thead>
                     <tbody>
-                      @foreach($data as $user)
+                      @foreach($location as $user)
                         <tr>
+                            <td>
+                                {{ $user->created_at->format('d m Y | h:i:s') }}
+                              </td>
                           <td>
                             {{ $user->nama_gedung }}
                           </td>
                           <td>
-                            {{ $user->alamat }}
+                            {{ $user->lantai_gedung }}
+                          </td>
+                          <td>
+                            {{ $user->keterangan }}
                           </td>
                           <td>
                             {{ $user->updated_at->diffForHumans() }}
                           </td>
-                          <td class="td-actions text-right">
-                              <form action="{{ route('lokasi.destroy', $user->id) }}" method="post">
+                          {{-- <td class="td-actions text-right">
+                              <form action="{{ route('locations.destroy', $user->id) }}" method="post">
                                   @csrf
                                   @method('delete')
                               
-                                  <a rel="tooltip" class="btn btn-success btn-link" href="{{ route('lokasi.edit', $user->id) }}" data-original-title="" title="">
+                                  <a rel="tooltip" class="btn btn-success btn-link" href="{{ route('locations.edit', $user->id) }}" data-original-title="" title="">
                                     <i class="material-icons">edit</i>
                                     <div class="ripple-container"></div>
                                   </a>
@@ -71,7 +75,7 @@
                                       <div class="ripple-container"></div>
                                   </button>
                               </form>
-                          </td>
+                          </td> --}}
                         </tr>
                       @endforeach
                     </tbody>

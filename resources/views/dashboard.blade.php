@@ -31,7 +31,7 @@
                     <h5 class="card-title">{{strtoupper($item->name)}}</span></h5>
                     <h6 class="card-category text-gray">{{$item->rolesDetail->name}}</h6>
                     <div class="card-footer justify-content-center">
-                      @if($item->status === 1)
+                      @if($item->status === 1 || $item->status === null )
                         <span class="text-success">
                             <i class="fa fa-circle"> Tersedia </i>
                         </span>
@@ -59,9 +59,9 @@
                     <a href="https://wa.me/6285210069654?text=Oi%20Dimana%20{{$item->name}}" target="_blank" class="btn btn-just-icon btn-success btn-round">
                         <i class="fa fa-whatsapp"></i>
                     </a>
-                    <a href="#pablo" class="btn btn-just-icon btn-info btn-round">
-                            <i class="fa fa-eye"></i>
-                        </a>
+                    <a href="{{route('locations.show',$item->id)}}" class="btn btn-just-icon btn-info btn-round">
+                        <i class="fa fa-eye"></i>
+                    </a>
                 </div>
             </div>
           </div>

@@ -29,8 +29,11 @@
                   </div>
                 </div>
                 <div class="table-responsive">
-                  <table class="table">
+                  <table class="table text-center">
                     <thead>
+                        <th>
+                            {{ __('Tanggal') }}
+                        </th>
                       <th>
                           {{ __('Nama Gedung') }}
                       </th>
@@ -43,13 +46,16 @@
                       <th>
                         {{ __('Update') }}
                       </th>
-                      <th class="text-right">
+                      {{-- <th class="text-right">
                         {{ __('Actions') }}
-                      </th>
+                      </th> --}}
                     </thead>
                     <tbody>
                       @foreach($locations as $user)
                         <tr>
+                            <td>
+                                {{ $user->created_at->format('d m Y | h:i:s') }}
+                              </td>
                           <td>
                             {{ $user->nama_gedung }}
                           </td>
@@ -62,7 +68,7 @@
                           <td>
                             {{ $user->updated_at->diffForHumans() }}
                           </td>
-                          <td class="td-actions text-right">
+                          {{-- <td class="td-actions text-right">
                               <form action="{{ route('locations.destroy', $user->id) }}" method="post">
                                   @csrf
                                   @method('delete')
@@ -76,7 +82,7 @@
                                       <div class="ripple-container"></div>
                                   </button>
                               </form>
-                          </td>
+                          </td> --}}
                         </tr>
                       @endforeach
                     </tbody>

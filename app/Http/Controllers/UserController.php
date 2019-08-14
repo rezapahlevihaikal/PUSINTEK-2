@@ -55,6 +55,8 @@ class UserController extends Controller
         $users->email    = $request->email;
         $users->password = bcrypt($request->password);
         $users->role_id  = $request->role_id;
+        $users->status    = 1;
+        $users->location  = 'pusintek'; 
 
         if($request->hasFile('image')){
             $file = $request->file('image');
