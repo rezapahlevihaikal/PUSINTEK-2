@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\User;
 use App\Role;
+use App\Location;
 use File;
 use App\Http\Requests\UserRequest;
 use Illuminate\Http\Request;
@@ -143,7 +144,10 @@ class UserController extends Controller
      * @return \Illuminate\Http\RedirectResponse
      */
     public function destroy(User  $user)
-    {
+    {   
+        // dd($user->id);
+        $location = Location::where('created_by','=', $user->id);
+        $location->delete();
         File::delete('images/'.$user->image);
         $user->delete();
 
