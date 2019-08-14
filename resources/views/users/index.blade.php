@@ -89,3 +89,9 @@
     </div>
   </div>
 @endsection
+
+<!-- <script src="node_modules/intl-tel-input/src/js/intlTelInput.js"></script>
+<script>
+  var input = document.querySelector("#phone");
+  window.intlTelInput(input);
+</script>  -->

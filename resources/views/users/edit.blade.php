@@ -61,6 +61,18 @@
                 </div>
 
                 <div class="row">
+                  <label class="col-sm-2 col-form-label">{{ __('Nomor Telepon') }}</label>
+                  <div class="col-sm-7">
+                    <div class="form-group{{ $errors->has('phone') ? ' has-danger' : '' }}">
+                      <input class="form-control{{ $errors->has('phone') ? ' is-invalid' : '' }}" name="phone" id="input-phone" type="phone" placeholder="{{ __('Nomor Telepon (ex: 62812xxxx)') }}" value="{{ old('phone', $user->phone) }}" required />
+                      @if ($errors->has('phone'))
+                        <span id="phone-error" class="error text-danger" for="input-phone">{{ $errors->first('phone') }}</span>
+                      @endif
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row">
                   <label class="col-sm-2 col-form-label">{{ __('Role') }}</label>
                   <div class="col-sm-7">
                     <div class="form-group{{ $errors->has('role_id') ? ' has-danger' : '' }}">
