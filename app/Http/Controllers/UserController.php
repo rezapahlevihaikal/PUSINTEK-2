@@ -47,7 +47,8 @@ class UserController extends Controller
             'email'     => 'required|email',
             'password'  => 'required|min:6|confirmed',
             'role_id'   => 'required',
-            'image' => 'required|image|mimes:jpg,png,jpeg,svg|max:2048'
+            'image' => 'required|image|mimes:jpg,png,jpeg,svg|max:2048',
+            'phone' => 'required',
         ]);
 
         $users = new User;
@@ -55,6 +56,7 @@ class UserController extends Controller
         $users->email    = $request->email;
         $users->password = bcrypt($request->password);
         $users->role_id  = $request->role_id;
+        $users->phone    = $request->phone;
 
         if($request->hasFile('image')){
             $file = $request->file('image');
@@ -95,17 +97,20 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {   
+       
         $request->validate([
             'name'      => 'required',
             'email'     => 'required|email',
             'password'  => 'confirmed',
             'role_id'   => 'required',
+            'phone'     => 'required',
         ]);
-
+            
         $user = User::find($id);
         $user->name     = $request->name;
         $user->email    = $request->email;
         $user->role_id  = $request->role_id;
+        $user->phone    = $request->phone;
 
         if($request->password != ""){
             $user->password = bcrypt($request->password);

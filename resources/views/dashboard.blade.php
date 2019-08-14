@@ -56,7 +56,7 @@
                 <hr>
                 </div>
                 <div class="card-footer justify-content-center">
-                    <a href="https://wa.me/6285210069654?text=Oi%20Dimana%20{{$item->name}}" target="_blank" class="btn btn-just-icon btn-success btn-round">
+                    <a href="https://wa.me/{{$item->phone}}?text=Samlekom%20Dimana%20oi?%20{{$item->name}}" target="_blank" class="btn btn-just-icon btn-success btn-round">
                         <i class="fa fa-whatsapp"></i>
                     </a>
                     <a href="#pablo" class="btn btn-just-icon btn-info btn-round">
