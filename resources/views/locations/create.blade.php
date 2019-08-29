@@ -10,14 +10,14 @@
             @method('post')
 
             <div class="card ">
-              <div class="card-header card-header-primary">
+              <div class="card-header card-header-info">
                 <h4 class="card-title">{{ __('Menambahkan Lokasi') }}</h4>
                 <p class="card-category"></p>
               </div>
               <div class="card-body ">
                 <div class="row">
                   <div class="col-md-12 text-right">
-                      <a href="{{ route('locations.index') }}" class="btn btn-sm btn-primary">{{ __('Kembali') }}</a>
+                      <a href="{{ route('locations.index') }}" class="btn btn-sm btn-warning">{{ __('Kembali') }}</a>
                   </div>
                 </div>
 
@@ -69,7 +69,7 @@
                 </div>
                 
               <div class="card-footer ml-auto mr-auto">
-                <button type="submit" class="btn btn-primary">{{ __('Tambahkan') }}</button>
+                <button type="submit" class="btn btn-warning">{{ __('Tambahkan') }}</button>
               </div>
             </div>
           </form>

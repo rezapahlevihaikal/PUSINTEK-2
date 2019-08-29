@@ -12,7 +12,7 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-sm-12 mb-3">
-          <input type="text" id="myFilter" class="form-control" onkeyup="myFunction()" placeholder="Search for names..">
+          <input type="text" id="myFilter" class="form-control" onkeyup="myFunction()" placeholder="Cari nama..">
         </div>
       </div>
       <br>

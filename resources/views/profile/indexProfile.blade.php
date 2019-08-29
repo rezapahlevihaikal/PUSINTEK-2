@@ -34,9 +34,10 @@
                           <div class="col-sm-6 col-md-8                                                         ">
                             <h4>{{strtoupper(auth()->user()->name)}}</h4>
                             
-                            <h4>{{strtoupper(auth()->user()->email)}}</h4>
-                            <h4>Joined since {{strtoupper(auth()->user()->created_at->format('d M Y'))}}</h4>
+                            <h4>{{(auth()->user()->email)}}</h4>
                             <h4>{{strtoupper(Auth::user()->rolesDetail->name)}}</h4>
+                            <h4>{{strtoupper(auth()->user()->created_at->format('d M Y'))}}</h4>
+                            
                 </div>
               </div>
          </div>
