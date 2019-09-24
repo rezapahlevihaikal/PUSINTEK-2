@@ -39,9 +39,13 @@
                         <span class="text-danger">
                             <i class="fa fa-circle"> Sibuk </i>
                         </span>
-                      @else
+                      @elseif ($item->status === 3)
                         <span>
                             <i class="fa fa-circle"> Cuti </i>
+                        </span>
+                      @else
+                        <span class="text-warning">
+                            <i class="fa fa-circle"> Dinas </i>
                         </span>
                       @endif
                     </div>

@@ -26,15 +26,15 @@
                           <div class="col-12 text-right">
                       </div>
                       </div>
-              <div class="row">
+              <div class="row"  style="padding: 10px">
                       <div class="col-sm-6 col-md-3" >
-                          <img src="{{asset('images/'.auth()->user()->image)}}" alt="no photo" class="img-fluid" />
+                          <img src="{{asset('images/'.auth()->user()->image)}}" alt="no photo" class="img-fluid" style="border-radius: 20px" />
                       </div>
                       
-                          <div class="col-sm-6 col-md-8                                                         ">
-                            <h4>{{strtoupper(auth()->user()->name)}}</h4>
-                            
+                          <div class="col-sm-6 col-md-8" style="padding-top: 30px">
+                            <h4><b>{{strtoupper(auth()->user()->name)}}</b></h4>
                             <h4>{{(auth()->user()->email)}}</h4>
+                            <h4 style="color: blue"><i class="fa fa-map-marker"></i> {{(auth()->user()->location)}}</h4>
                             <h4>{{strtoupper(Auth::user()->rolesDetail->name)}}</h4>
                             <h4>{{strtoupper(auth()->user()->created_at->format('d M Y'))}}</h4>
                             

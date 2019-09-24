@@ -35,11 +35,11 @@
                             {{ __('Tanggal') }}
                         </th>
                       <th>
-                          {{ __('Nama Gedung') }}
+                          {{ __('Lokasi') }}
                       </th>
-                      <th>
+                      {{--  <th>
                         {{ __('Lantai Gedung') }}
-                      </th>
+                      </th>  --}}
                       <th>
                         {{ __('Keterangan') }}
                       </th>
@@ -59,9 +59,9 @@
                           <td>
                             {{ $user->nama_gedung }}
                           </td>
-                          <td>
+                          {{--  <td>
                             {{ $user->lantai_gedung }}
-                          </td>
+                          </td>  --}}
                           <td>
                             {{ $user->keterangan }}
                           </td>
