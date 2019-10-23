@@ -12,7 +12,7 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-sm-12 mb-3">
-          <input type="text" id="myFilter" class="form-control" onkeyup="myFunction()" placeholder="Search for names..">
+          <input type="text" id="myFilter" class="form-control" onkeyup="myFunction()" placeholder="Cari nama..">
         </div>
         <div class="col-sm-12 mb-3">
           <button type="button" class="btn-info"  data-toggle="modal" data-target="#exampleModal">
@@ -44,9 +44,13 @@
                         <span class="text-danger">
                             <i class="fa fa-circle"> Sibuk </i>
                         </span>
-                      @else
+                      @elseif ($item->status === 3)
                         <span>
                             <i class="fa fa-circle"> Cuti </i>
+                        </span>
+                      @else
+                        <span class="text-warning">
+                            <i class="fa fa-circle"> Dinas </i>
                         </span>
                       @endif
                     </div>
@@ -61,7 +65,7 @@
                 <hr>
                 </div>
                 <div class="card-footer justify-content-center">
-                    <a href="https://wa.me/{{$item->phone}}?text=Samlekom%20Dimana%20oi?%20{{$item->name}}" target="_blank" class="btn btn-just-icon btn-success btn-round">
+                    <a href="https://wa.me/{{$item->phone}}?text=Halo%20posisi%20dimana%20ya?%20{{$item->name}}" target="_blank" class="btn btn-just-icon btn-success btn-round">
                         <i class="fa fa-whatsapp"></i>
                     </a>
                     <a href="{{route('locations.show',$item->id)}}" class="btn btn-just-icon btn-info btn-round">

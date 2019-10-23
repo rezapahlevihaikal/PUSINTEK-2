@@ -17,6 +17,17 @@ class LocationController extends Controller
     public function index()
     {
         $locations = Location::orderBy('created_at','DSC')->where('created_by', Auth::user()->id )->get();
+        
+        // if(count($locations) > 0){
+        //     $res['message'] = "success";
+        //     $res['values'] = $locations;
+        //     return response($res);
+        // }
+        // else{
+        //     $res['message'] = "empty";
+        //     return response($res);
+        // }
+
         return view('locations.index', compact('locations'));
     }
 
@@ -39,16 +50,22 @@ class LocationController extends Controller
      */
     public function store(Request $request)
     {   
-        $tanggal = date("m/d/Y");
-        dd($tanggal);
+        // $tanggal = date("m/d/Y");
+        // dd($tanggal);
+        $request->validate([
+            'status'      => 'required',
+            'lantai_gedung'     => 'required',
+            'keterangan' => 'required'
+        ]);
+
         $user = User::find(Auth::user()->id);
         $user->status = $request->status;
-        $user->location = $request->nama_gedung;
+        $user->location = $request->ip();
         $user->save();
         
         $loc = new Location;
         $loc->created_by = Auth::user()->id;
-        $loc->nama_gedung = $request->nama_gedung;
+        $loc->nama_gedung = $request->ip();
         $loc->lantai_gedung = $request->lantai_gedung;
         $loc->keterangan = $request->keterangan;
         $loc->save();

@@ -10,18 +10,18 @@
             @method('post')
 
             <div class="card ">
-              <div class="card-header card-header-primary">
+              <div class="card-header card-header-info">
                 <h4 class="card-title">{{ __('Menambahkan Lokasi') }}</h4>
                 <p class="card-category"></p>
               </div>
               <div class="card-body ">
                 <div class="row">
                   <div class="col-md-12 text-right">
-                      <a href="{{ route('locations.index') }}" class="btn btn-sm btn-primary">{{ __('Kembali') }}</a>
+                      <a href="{{ route('locations.index') }}" class="btn btn-sm btn-warning">{{ __('Kembali') }}</a>
                   </div>
                 </div>
 
-                <div class="row">
+                {{--  <div class="row">
                     <label class="col-sm-2 col-form-label">{{ __('Nama Gedung') }}</label>
                     <div class="col-sm-7">
                       <div class="form-group{{ $errors->has('nama_gedung') ? ' has-danger' : '' }}">
@@ -31,7 +31,7 @@
                         @endif
                       </div>
                     </div>
-                  </div>
+                  </div>  --}}
 
                   <div class="row">
                     <label class="col-sm-2 col-form-label">{{ __('Status') }}</label>
@@ -41,7 +41,11 @@
                             <option value="1">Available</option>
                             <option value="2">Busy</option>
                             <option value="3">Cuti</option>
+                            <option value="4">Dinas</option>
                         </select>
+                        @if ($errors->has('status'))
+                        <span id="status-error" class="error text-danger" for="input-status">{{ $errors->first('status') }}</span>
+                      @endif
                     </div>
                   </div>
 
@@ -69,7 +73,7 @@
                 </div>
                 
               <div class="card-footer ml-auto mr-auto">
-                <button type="submit" class="btn btn-primary">{{ __('Tambahkan') }}</button>
+                <button type="submit" class="btn btn-warning">{{ __('Tambahkan') }}</button>
               </div>
             </div>
           </form>

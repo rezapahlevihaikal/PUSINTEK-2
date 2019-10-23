@@ -26,6 +26,7 @@ class HomeController extends Controller
         $users = User::orderBy('status','ASC')->get();
         return view('dashboard',compact('users'));
     }
+   
 
 
 }

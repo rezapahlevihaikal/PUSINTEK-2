@@ -21,7 +21,7 @@
       <li class="nav-item{{ $activePage == 'locations-management' ? ' active' : '' }}">
         <a class="nav-link" href="{{ route('locations.index') }}">
           <i class="material-icons">list</i>
-            <p>{{ __('Manage Your Location') }}</p>
+            <p>{{ __('Kelola Lokasi Anda') }}</p>
         </a>
       </li>
 

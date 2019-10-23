@@ -13,7 +13,12 @@
         "laravel-frontend-presets/material-dashboard": "^1.0",
         "laravel/framework": "5.6.*",
         "laravel/tinker": "^1.0",
+<<<<<<< HEAD
         "stevebauman/location": "^5.0"
+=======
+        "stevebauman/location": "^5.0",
+        "tymon/jwt-auth": "1.0.*"
+>>>>>>> cf90eade98008f79322bedc3e0e7a10cc4590d98
     },
     "require-dev": {
         "filp/whoops": "^2.0",

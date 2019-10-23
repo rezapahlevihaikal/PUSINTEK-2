@@ -6,8 +6,8 @@
       <div class="row">
         <div class="col-md-12">
             <div class="card">
-              <div class="card-header card-header-primary">
-                <h4 class="card-title ">{{ __('Lokasi Pegawai') }}</h4>
+              <div class="card-header card-header-info">
+                <h4 class="card-title ">{{ __('Kelola Lokasi Anda') }}</h4>
                 <!-- <p class="card-category"> {{ __('Here you can manage Locations') }}</p> -->
               </div>
               <div class="card-body">
@@ -25,7 +25,7 @@
                 @endif
                 <div class="row">
                   <div class="col-12 text-right">
-                    <a href="{{ route('locations.create') }}" class="btn btn-sm btn-primary">{{ __('Tambahkan   ') }}</a>
+                    <a href="{{ route('locations.create') }}" class="btn btn-sm btn-warning">{{ __('Tambahkan   ') }}</a>
                   </div>
                 </div>
                 <div class="table-responsive">
@@ -35,11 +35,11 @@
                             {{ __('Tanggal') }}
                         </th>
                       <th>
-                          {{ __('Nama Gedung') }}
+                          {{ __('Lokasi') }}
                       </th>
-                      <th>
+                      {{--  <th>
                         {{ __('Lantai Gedung') }}
-                      </th>
+                      </th>  --}}
                       <th>
                         {{ __('Keterangan') }}
                       </th>
@@ -59,9 +59,9 @@
                           <td>
                             {{ $user->nama_gedung }}
                           </td>
-                          <td>
+                          {{--  <td>
                             {{ $user->lantai_gedung }}
-                          </td>
+                          </td>  --}}
                           <td>
                             {{ $user->keterangan }}
                           </td>
