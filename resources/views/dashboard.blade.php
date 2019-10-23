@@ -14,6 +14,11 @@
         <div class="col-sm-12 mb-3">
           <input type="text" id="myFilter" class="form-control" onkeyup="myFunction()" placeholder="Search for names..">
         </div>
+        <div class="col-sm-12 mb-3">
+          <button type="button" class="btn-info"  data-toggle="modal" data-target="#exampleModal">
+              Export To Excel
+          </button>
+        </div>
       </div>
       <br>
       
@@ -67,6 +72,45 @@
           </div>
         @endforeach
       </div>
+  </div>
+
+
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Export All Data Locations To Excel</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+          <form action="{{route('locations.store')}}" method="POST" >
+              {{csrf_field()}}
+              <div class="form-group {{$errors->has('start_date') ? 'has-error' : ' '}}">
+                  <label for="start_date">Start Date :</label>
+                  <input name="start_date" type="date" class="form-control" id="start_date" aria-describedby="start_date">
+                  @if($errors -> has('start_date'))
+                  <span class="help-block">{{$errors->first('start_date')}}</span>
+                  @endif
+              </div>
+              <div class="form-group {{$errors->has('start_date') ? 'has-error' : ' '}}">
+                <label for="end_date">End Date :</label>
+                <input name="end_date" type="date" class="form-control" id="end_date" aria-describedby="end_date">
+                @if($errors -> has('end_date'))
+                <span class="help-block">{{$errors->first('end_date')}}</span>
+                @endif  
+              </div>
+              
+              <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button type="submit" class="btn btn-primary">Download</button>
+              </div>
+          </form>
+        </div>
+        </div>
+    </div>
   </div>
 @endsection
 @section('js')

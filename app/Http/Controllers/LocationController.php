@@ -39,6 +39,8 @@ class LocationController extends Controller
      */
     public function store(Request $request)
     {   
+        $tanggal = date("m/d/Y");
+        dd($tanggal);
         $user = User::find(Auth::user()->id);
         $user->status = $request->status;
         $user->location = $request->nama_gedung;
